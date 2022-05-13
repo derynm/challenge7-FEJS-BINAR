@@ -10,8 +10,9 @@ import { useNavigate } from "react-router-dom";
 export const LoginPage = () => {
   const authDef = auth;
   const provider = new GoogleAuthProvider();
-  const [Host, setHost] = useState(process.env.REACT_APP_HOST)
+  const [Host, setHost] = useState(process.env.REACT_APP_HOST);
   let navigate = useNavigate();
+  let axios = require("axios");
 
   const [PageType, setPageType] = useState("register");
 
@@ -56,8 +57,68 @@ export const LoginPage = () => {
       });
   };
 
+  const handleRegister = (role) => {
+    if (role === "admin") {
+      registerAdmin();
+    } else if (role === "customer") {
+      registerCustomer();
+    }
+  };
+
+  const registerAdmin = () => {
+    let data = JSON.stringify({
+      email: EmailRegister,
+      password: PasswrdRegister,
+      role: "admin",
+    });
+
+    let config = {
+      method: "post",
+      url: `${Host}admin/auth/register`,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: data,
+    };
+
+    axios(config)
+      .then(function (response) {
+        alert("akun admin berhasil terdaftar");
+        handlePageType("Login");
+        setEmailLogin("")
+        setPasswrdLogin("")
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+
+  const registerCustomer = () => {
+    let data = JSON.stringify({
+      email: EmailRegister,
+      password: PasswrdRegister,
+    });
+
+    let config = {
+      method: "post",
+      url: `${Host}customer/auth/register`,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: data,
+    };
+
+    axios(config)
+      .then(function (response) {
+        alert("akun customer berhasil terdaftar");
+        handlePageType("Login");
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+
   const handleLogin = () => {
-    let axios = require("axios");
     let data = JSON.stringify({
       email: EmailLogin,
       password: PasswrdLogin,
@@ -74,9 +135,9 @@ export const LoginPage = () => {
 
     axios(config)
       .then(function (response) {
-        alert("login berhasil")
-        sessionStorage.setItem("Token", response.data.access_token)
-        navigate(`/dashboard`)
+        alert("login berhasil");
+        sessionStorage.setItem("Token", response.data.access_token);
+        navigate(`/dashboard`);
       })
       .catch(function (error) {
         console.log(error);
@@ -129,12 +190,12 @@ export const LoginPage = () => {
               <option key={1} value={"admin"}>
                 Admin
               </option>
-              <option key={2} value={"costumer"}>
-                Costumer
+              <option key={2} value={"customer"}>
+                Customer
               </option>
             </select>
           </div>
-          <button className="button-form">Sign In</button>
+          <button className="button-form" onClick={()=>{handleRegister(RoleRegister)}}>Sign Up</button>
           <p
             className="to-login"
             onClick={() => {
@@ -145,6 +206,7 @@ export const LoginPage = () => {
           </p>
         </div>
       ) : (
+        
         <div className="login-form">
           <img src={logoLogin} alt="logo" />
           <h4>Welcome, Admin BCR</h4>
@@ -154,6 +216,7 @@ export const LoginPage = () => {
               id="email-login"
               type="email"
               placeholder="Contoh: johndee@gmail.com"
+              value={EmailLogin}
               onChange={(e) => {
                 handleStateLogin(e);
               }}
@@ -166,13 +229,21 @@ export const LoginPage = () => {
               id="password-login"
               type="password"
               placeholder="6+ karakter"
+              value={PasswrdLogin}
               onChange={(e) => {
                 handleStateLogin(e);
               }}
               required
             />
           </div>
-          <button className="button-form" onClick={()=>{handleLogin()}}>Sign In</button>
+          <button
+            className="button-form"
+            onClick={() => {
+              handleLogin();
+            }}
+          >
+            Sign In
+          </button>
           <GoogleButton onClick={handleGoogle} />
         </div>
       )}
