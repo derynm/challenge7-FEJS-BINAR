@@ -1,0 +1,63 @@
+#section-1 {
+    background: #F1F3FF;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: black;
+}
+
+.nav-item {
+    padding-right: 0.7rem;
+    padding-left: 0.7rem;
+}
+
+.navbar-padding-top {
+    padding-top: 12px;
+}
+
+.hero {
+
+    padding-top: 1.5rem;
+}
+
+.hero-content1 {
+    align-items: center;
+    padding-top: 5rem;
+    
+}
+
+.hero-content1 p {
+    width: 81%;
+    padding-top: 1rem;
+    padding-bottom: 0.2rem;
+}
+
+.hero-content2 img{
+    padding-top: 1rem;
+}
+
+.img-hero {
+    margin-left: 17%;
+}
+
+.service {
+    padding-top: 6.5rem;
+}
+
+.service-content2-container{
+    width: 80%;
+    padding-top: 2rem;
+    margin-left: 0.5rem;
+}
+
+.service-content2-container h4 {
+    padding-bottom: 1rem;
+}
+
+.service-content2-container img {
+    height: 70%;
+}
+
+.service-content2-list p{
+    padding-left: 1rem;
+}
