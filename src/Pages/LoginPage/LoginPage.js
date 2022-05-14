@@ -14,12 +14,11 @@ export const LoginPage = () => {
   let navigate = useNavigate();
   let axios = require("axios");
 
-  const [PageType, setPageType] = useState("register");
+  const [PageType, setPageType] = useState("login");
 
   //state register
   const [EmailRegister, setEmailRegister] = useState(null);
   const [PasswrdRegister, setPasswrdRegister] = useState(null);
-  const [RoleRegister, setRoleRegister] = useState(null);
 
   //state login
   const [EmailLogin, setEmailLogin] = useState(null);
@@ -27,6 +26,10 @@ export const LoginPage = () => {
 
   const handlePageType = (type) => {
     setPageType(type);
+    setEmailLogin("");
+    setPasswrdLogin("");
+    setEmailRegister("");
+    setPasswrdRegister("");
   };
 
   const handleStateRegister = (e) => {
@@ -34,9 +37,7 @@ export const LoginPage = () => {
       setEmailRegister(e.target.value);
     } else if (e.target.id === "password-register") {
       setPasswrdRegister(e.target.value);
-    } else if (e.target.id === "role-register") {
-      setRoleRegister(e.target.value);
-    }
+    } 
   };
 
   const handleStateLogin = (e) => {
@@ -50,20 +51,17 @@ export const LoginPage = () => {
   const handleGoogle = () => {
     signInWithPopup(authDef, provider)
       .then((data) => {
-        console.log(data);
+        if (data) {
+          sessionStorage.setItem("Token-customer", data.user.accessToken);
+          navigate(`/home`);
+        }
       })
       .catch((err) => {
         console.log(err);
       });
   };
 
-  const handleRegister = (role) => {
-    if (role === "admin") {
-      registerAdmin();
-    } else if (role === "customer") {
-      registerCustomer();
-    }
-  };
+
 
   const registerAdmin = () => {
     let data = JSON.stringify({
@@ -85,38 +83,17 @@ export const LoginPage = () => {
       .then(function (response) {
         alert("akun admin berhasil terdaftar");
         handlePageType("Login");
-        setEmailLogin("")
-        setPasswrdLogin("")
+        setEmailLogin("");
+        setPasswrdLogin("");
+        setEmailRegister("");
+        setPasswrdRegister("");
       })
       .catch(function (error) {
-        console.log(error);
+        alert("Register gagal");
       });
   };
 
-  const registerCustomer = () => {
-    let data = JSON.stringify({
-      email: EmailRegister,
-      password: PasswrdRegister,
-    });
 
-    let config = {
-      method: "post",
-      url: `${Host}customer/auth/register`,
-      headers: {
-        "Content-Type": "application/json",
-      },
-      data: data,
-    };
-
-    axios(config)
-      .then(function (response) {
-        alert("akun customer berhasil terdaftar");
-        handlePageType("Login");
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  };
 
   const handleLogin = () => {
     let data = JSON.stringify({
@@ -140,7 +117,7 @@ export const LoginPage = () => {
         navigate(`/dashboard`);
       })
       .catch(function (error) {
-        console.log(error);
+        alert("login gagal");
       });
   };
 
@@ -149,7 +126,7 @@ export const LoginPage = () => {
       <img src={background} alt="background" />
       {PageType === "register" ? (
         <div className="register-form">
-          <img src={logoLogin} alt="logo" />
+          <img src={logoLogin} alt="logo" id="logo-form"/>
           <h4>Create new Account</h4>
           <div className="input-form">
             <p>Email</p>
@@ -157,6 +134,7 @@ export const LoginPage = () => {
               id="email-register"
               type="email"
               placeholder="Contoh: johndee@gmail.com"
+              value={EmailRegister}
               onChange={(e) => {
                 handleStateRegister(e);
               }}
@@ -169,33 +147,22 @@ export const LoginPage = () => {
               id="password-register"
               type="password"
               placeholder="6+ karakter"
+              value={PasswrdRegister}
               onChange={(e) => {
                 handleStateRegister(e);
               }}
               required
             />
           </div>
-          <div className="input-form">
-            <p>Role</p>
-            <select
-              id="role-register"
-              onChange={(e) => {
-                handleStateRegister(e);
-              }}
-              required
-            >
-              <option value="" disabled selected hidden>
-                Pilih Role
-              </option>
-              <option key={1} value={"admin"}>
-                Admin
-              </option>
-              <option key={2} value={"customer"}>
-                Customer
-              </option>
-            </select>
-          </div>
-          <button className="button-form" onClick={()=>{handleRegister(RoleRegister)}}>Sign Up</button>
+
+          <button
+            className="button-form"
+            onClick={() => {
+              registerAdmin();
+            }}
+          >
+            Sign Up
+          </button>
           <p
             className="to-login"
             onClick={() => {
@@ -206,9 +173,8 @@ export const LoginPage = () => {
           </p>
         </div>
       ) : (
-        
         <div className="login-form">
-          <img src={logoLogin} alt="logo" />
+          <img src={logoLogin} alt="logo" id="logo-form"/>
           <h4>Welcome, Admin BCR</h4>
           <div className="input-form">
             <p>Email</p>
@@ -244,7 +210,17 @@ export const LoginPage = () => {
           >
             Sign In
           </button>
-          <GoogleButton onClick={handleGoogle} />
+          <div className="btn-google">
+            <GoogleButton onClick={handleGoogle} />
+          </div>
+          <p
+            className="to-login"
+            onClick={() => {
+              handlePageType("register");
+            }}
+          >
+            Don't have an account?
+          </p>
         </div>
       )}
     </div>

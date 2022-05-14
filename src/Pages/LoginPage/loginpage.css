@@ -7,6 +7,10 @@
   font-family: "Helvetica";
 }
 
+#logo-form {
+  margin: 16px 0px;
+}
+
 .login-form {
     display: flexbox;
     flex-wrap: wrap;
@@ -96,4 +100,12 @@
 .to-login:hover {
     color: #2344d5;
     cursor: pointer;
+}
+
+.btn-google {
+  display: flex;
+  margin: 12px 0px;
+
+  justify-content: center;
+
 }
