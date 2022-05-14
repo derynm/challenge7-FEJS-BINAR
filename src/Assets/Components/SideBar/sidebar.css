@@ -1,0 +1,41 @@
+#sidebar-main {
+    height: 100vh;
+    background-color: #0D28A6;
+    width: 70px;
+    font-family: 'Helvetica';
+    
+}
+
+.container-sidebar-main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 16px;
+    max-height: 400px;
+}
+
+.logo-sidebar-main {
+    max-width: 34px;
+    margin: auto;
+    padding-bottom: 18px;
+
+}
+
+.container-menu-sidebar-main {
+    color: white;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 18px 0px;
+}
+
+.container-menu-sidebar-main p {
+    font-weight: 700;
+    font-size: 12px;
+}
+
+.icon-sidebar-main{
+    max-width: 24px;
+    margin: auto;
+}

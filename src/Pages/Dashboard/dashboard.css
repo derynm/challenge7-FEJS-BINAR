@@ -1,0 +1,27 @@
+.container-dashboard-main {
+  display: flex;
+  flex-wrap: wrap;
+  font-family: "Helvetica";
+  background-color: #F4F5F7;
+}
+
+.dashboard-right {
+    flex: 1;
+}
+.content-right {
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+.content-right h1 {
+     margin: auto;
+}
+
+.sidebar-right {
+    background-color: white;
+    width: 300px;
+    height: 673px;
+    margin-top: 10px;
+}
+

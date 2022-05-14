@@ -123,7 +123,7 @@ export const LoginPage = () => {
 
   return (
     <div className="login-page">
-      <img src={background} alt="background" />
+      <img src={background} alt="background" className="bg-login"/>
       {PageType === "register" ? (
         <div className="register-form">
           <img src={logoLogin} alt="logo" id="logo-form"/>
