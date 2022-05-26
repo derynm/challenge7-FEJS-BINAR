@@ -1,0 +1,83 @@
+.car-name {
+    font-weight: 600;
+}
+
+.card-edit {
+    border-radius: 8px !important;
+    box-shadow: 0px 0px 2px rgba(5, 5, 5, 0.246);
+    width: 300px !important;
+    margin-bottom: 20px;
+    margin-top: 30px;
+}
+
+.price {
+    font-weight: bold;
+}
+
+.list-feature {
+    list-style: none;
+    line-height: 200%;
+    margin-left: -30px;
+}
+
+.satu::before {
+    content: url(../../Img/fi_users.png);
+    padding-right: 12px;
+}
+
+.dua::before {
+    content: url(../../Img/fi_settings.png);
+    padding-right: 12px;
+}
+
+.tiga::before {
+    content: url(../../Img/fi_calendar.png);
+    padding-right: 12px;
+}
+
+.btn-edit-card {
+    width: 100% !important;
+    background: #5CB85F !important;
+    border-color: #5CB85F !important;
+    border-radius: 2px !important;
+}
+
+.start {
+    font-size: medium;
+    font-weight: 100;
+}
+
+.update {
+    font-size: medium;
+    font-weight: 100;
+}
+
+.start::before{
+    content: url(../../Img/key.png);
+    padding-right: 12px;
+}
+
+.update::before {
+    content: url(../../Img/clock.png);
+    padding-right: 12px;
+}
+
+.btn-mod {
+    width: 120px;
+}
+
+.btn-mod img {
+    padding: 4px;
+    
+}
+
+.btn-hold {
+    display: flex;
+    justify-content: space-between;
+}
+
+.card-img-top {
+    max-width: 260px;
+    max-height: 260px;
+    margin: auto;
+}
