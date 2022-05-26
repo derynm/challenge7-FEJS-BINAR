@@ -33,11 +33,11 @@ export const CarCard = (props) => {
 
           <div className="btn-hold">
             <Button className="btn-mod" variant="outline-danger">
-              <img src={trash} />
+              <img src={trash} alt=""/>
               Delete
             </Button>
             <Button className="btn-mod" variant="success">
-              <img src={edit} />
+              <img src={edit} alt=""/>
               Edit
             </Button>
           </div>

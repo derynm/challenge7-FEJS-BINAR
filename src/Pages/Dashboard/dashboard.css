@@ -98,3 +98,71 @@
   ::-webkit-scrollbar-thumb:hover {
     background: #474747; 
   }
+
+  #edit-frm {
+    width: 1150px;
+    margin-top: 10px;
+    margin-left: 0px;
+    height: 90vh;
+    padding: 10px 20px 30px 30px; 
+}
+
+.dir{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.dir img {
+    height: 10px;
+    margin-top: -16px;
+    padding: 0px 16px;
+}
+
+#frm-btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 560px;
+}
+
+#edit-frm-main {
+    background: rgb(255, 255, 255);
+    border-radius: 2px;
+    width: 80%;
+    padding: 12px;
+}
+
+.btn-grp-edit {
+    width: 140px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.input-add {
+    padding: 16px 0; display: flex;
+}
+
+.input-add label{
+    width: 148px;
+}
+
+.input-add input{
+    width: 340px;
+    height: 36px;
+    padding: 12px 9px;
+    border: solid 1px #D0D0D0;
+    border-radius: 2px;
+}
+
+.input-add select{
+    width: 340px;
+    height: 36px;
+    padding: 8px 9px;
+    border: solid 1px #D0D0D0;
+    border-radius: 2px;
+}
+
+.input-file input{
+    border: none !important;
+    padding: 0 !important;
+}

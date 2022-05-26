@@ -12,7 +12,13 @@ import { Button } from "react-bootstrap";
 export const Dashboard = () => {
   let navigate = useNavigate();
   const [DataMobil, setDataMobil] = useState([]);
-  const [AddDataStat, setAddDataStat] = useState("not")
+  const [AddDataStat, setAddDataStat] = useState("not");
+
+  const [TipeInput, setTipeInput] = useState(null);
+  const [NamaInput, setNamaInput] = useState(null);
+  const [HargaInput, setHargaInput] = useState(null);
+  const [FotoInput, setFotoInput] = useState(null);
+
   var axios = require("axios");
 
   useEffect(() => {
@@ -20,7 +26,6 @@ export const Dashboard = () => {
     if (!Token) {
       navigate(`/`);
     }
-
     fetchDataMobil();
   }, []);
 
@@ -40,6 +45,18 @@ export const Dashboard = () => {
       });
   };
 
+  const handleStateInput = (e) => {
+    if (e.target.id === "tipe-input") {
+      setTipeInput(e.target.value);
+    } else if (e.target.id === "nama-input") {
+      setNamaInput(e.target.value);
+    } else if (e.target.id === "harga-input") {
+      setHargaInput(e.target.value);
+    } else if (e.target.id === "foto-input") {
+      setFotoInput(e.target.files[0]);
+    }
+  };
+
   const handleMobil = (data) => {
     let dataValue = data;
     return dataValue.map((value, index) => {
@@ -49,8 +66,39 @@ export const Dashboard = () => {
     });
   };
 
+  const postToApi = () => {
+    const NamaHandle = NamaInput;
+    const HargaHandle = HargaInput;
+    const TipeHandle = TipeInput;
+    const FotoHandle = FotoInput;
+    var FormData = require("form-data");
+    var data = new FormData();
+    data.append("name", NamaHandle);
+    data.append("category", TipeHandle);
+    data.append("price", HargaHandle);
+    data.append("status", "true");
+    data.append("image", FotoHandle);
+
+    var config = {
+      method: "post",
+      url: "https://rent-car-appx.herokuapp.com/admin/car",
+      data: data,
+    };
+
+    axios(config)
+      .then(function (response) {
+        console.log(response);
+        setAddDataStat("not");
+        alert(response.statusText);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+
   return (
     <div>
+      {/* {console.log(TipeInput,NamaInput,FotoInput,HargaInput)} */}
       <div className="container-dashboard-main">
         <SideBar />
         <div className="dashboard-right">
@@ -59,27 +107,129 @@ export const Dashboard = () => {
             <div className="sidebar-right">
               <SideBar2 />
             </div>
-            <div id="card-db">
-              <div className="dir">
-                <p className="main">Cars </p>
-                <img src={right} />
-                <p>List car</p>
+
+            {AddDataStat === "not" ? (
+              <div id="card-db">
+                <div className="dir">
+                  <p className="main">Cars </p>
+                  <img src={right} alt="" />
+                  <p>List car</p>
+                </div>
+                <div className="title-button">
+                  <h4 className="main">List Car</h4>
+                  <Button
+                    variant="primary"
+                    onClick={() => {
+                      setAddDataStat("show");
+                    }}
+                  >
+                    <img src={plus} alt="" />
+                    Add New Car
+                  </Button>
+                </div>
+                <div className="btn-grp">
+                  <Button variant="outline-primary">All</Button>
+                  <Button variant="outline-primary">Small</Button>
+                  <Button variant="outline-primary">Medium</Button>
+                  <Button variant="outline-primary">Large</Button>
+                </div>
+                <div id="card-holder">{handleMobil(DataMobil)}</div>
               </div>
-              <div className="title-button">
-                <h4 className="main">List Car</h4>
-                <Button variant="primary" onClick={()=>{}}>
-                  <img src={plus} />
-                  Add New Car
-                </Button>
+            ) : (
+              <div id="edit-frm">
+                <div className="dir">
+                  <p className="main">Cars </p>
+                  <img src={right} alt="" />
+                  <p className="main">List car</p>
+                  <img src={right} alt="" />
+                  <p>Add New Car</p>
+                </div>
+                <h4 className="main">Add New Car</h4>
+                <div id="frm-btn">
+                  <div id="edit-frm-main">
+                    <div className="input-add">
+                      <label>Nama*</label>
+                      <input
+                        type="text"
+                        id="nama-input"
+                        onChange={(e) => {
+                          handleStateInput(e);
+                        }}
+                        required
+                      />
+                    </div>
+                    <div className="input-add">
+                      <label>Harga*</label>
+                      <input
+                        type="number"
+                        id="harga-input"
+                        onChange={(e) => {
+                          handleStateInput(e);
+                        }}
+                        required
+                      />
+                    </div>
+                    <div className="input-add">
+                      <label>Tipe*</label>
+                      <select
+                        id="tipe-input"
+                        onChange={(e) => {
+                          handleStateInput(e);
+                        }}
+                        required
+                      >
+                        <option>Pilih tipe</option>
+                        <option value="small">small</option>
+                        <option value="medium">medium</option>
+                        <option value="large">large</option>
+                      </select>
+                    </div>
+                    <div className="input-add input-file">
+                      <label>Foto*</label>
+                      <input
+                        type="file"
+                        id="foto-input"
+                        onChange={(e) => {
+                          handleStateInput(e);
+                        }}
+                        required
+                      />
+                    </div>
+                    <div className="input-add">
+                      <label>Start Rent</label>
+                      <p>-</p>
+                    </div>
+                    <div className="input-add">
+                      <label>Finish Rent</label>
+                      <p>-</p>
+                    </div>
+                    <div className="input-add">
+                      <label>Udated at</label>
+                      <p>-</p>
+                    </div>
+                  </div>
+
+                  <div className="btn-grp-edit">
+                    <Button
+                      variant="outline-primary"
+                      onClick={() => {
+                        setAddDataStat("not");
+                      }}
+                    >
+                      Cancel
+                    </Button>
+                    <Button
+                      variant="primary"
+                      onClick={() => {
+                        postToApi();
+                      }}
+                    >
+                      Save
+                    </Button>
+                  </div>
+                </div>
               </div>
-              <div className="btn-grp">
-                <Button variant="outline-primary">All</Button>
-                <Button variant="outline-primary">Small</Button>
-                <Button variant="outline-primary">Medium</Button>
-                <Button variant="outline-primary">Large</Button>
-              </div>
-              <div id="card-holder">{handleMobil(DataMobil)}</div>
-            </div>
+            )}
           </div>
         </div>
       </div>
