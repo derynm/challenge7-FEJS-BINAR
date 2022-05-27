@@ -8,11 +8,13 @@ import right from "../../Assets/Img/Vector.png";
 import plus from "../../Assets/Img/fi_plus.png";
 import "./dashboard.css";
 import { Button } from "react-bootstrap";
+import { ModalSucces } from "../../Assets/Components/Modal/ModalSucces";
 
 export const Dashboard = () => {
   let navigate = useNavigate();
   const [DataMobil, setDataMobil] = useState([]);
   const [AddDataStat, setAddDataStat] = useState("not");
+  const [SuccessAddStat, setSuccessAddStat] = useState(false);
 
   const [TipeInput, setTipeInput] = useState(null);
   const [NamaInput, setNamaInput] = useState(null);
@@ -89,7 +91,8 @@ export const Dashboard = () => {
       .then(function (response) {
         console.log(response);
         setAddDataStat("not");
-        alert(response.statusText);
+        setSuccessAddStat(true);
+        fetchDataMobil();
       })
       .catch(function (error) {
         console.log(error);
@@ -233,6 +236,7 @@ export const Dashboard = () => {
           </div>
         </div>
       </div>
+      {SuccessAddStat ? <ModalSucces visibility={()=>{setSuccessAddStat(false)}}/> : null}
     </div>
   );
 };

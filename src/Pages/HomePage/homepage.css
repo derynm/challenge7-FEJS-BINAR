@@ -1,3 +1,13 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
 #section-1 {
     background: #F1F3FF;
 }
@@ -60,4 +70,106 @@
 
 .service-content2-list p{
     padding-left: 1rem;
+}
+.why-us {
+    padding-top: 6.5rem;
+}
+
+.why-us p {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+.why-us-card{
+    padding-top: 1rem;
+}
+
+.testimoni {
+    padding-top: 6.5rem;
+}
+
+.img-testi {
+    height: 65%;
+
+}
+
+.card-testi {
+    background: #F1F3FF;
+    border: none;
+}
+
+.carousel-control-prev-icon {
+    border-radius: 50%;
+}
+
+.carousel-control-next-icon {
+    border-radius: 50%;
+}
+
+.sewa {
+    padding-top: 6.5rem;
+}
+
+.sewa-banner {
+    background: #0D28A6;
+    border-radius: 15px;
+    width: 100%;
+}
+
+.sewa-banner h1 {
+    color: white;
+}
+
+.sewa-banner p {
+    width: 40%;
+    color: #ffffffad;
+}
+
+.swiper {
+    width: 118.6%;
+    height: 100%;
+    margin-left: -9% !important;
+    overflow-x: hidden;
+  }
+
+.swiper-slide {
+    background: #fff;
+
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+.accordion-flush .accordion-item .accordion-button {
+    border-radius: 5px;
+}
+
+.accordion-custom {
+    border: 0.2px solid rgba(115, 115, 115, 0.381);
+}
+
+.footer .row .col p {
+    width: 65%;
+}
+
+.footer .row a {
+    text-decoration: none;
+    color: black;
+}
+
+.footer .row .col {
+    border-top: 1px solid rgba(0, 0, 0, 0.081);
+}
+
+.footer .row .media-social {
+    border: none;
 }
