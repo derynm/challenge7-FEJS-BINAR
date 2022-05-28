@@ -1,0 +1,71 @@
+.card-edit-pay {
+    border-radius: 8px !important;
+    box-shadow: 0px 0px 2px rgba(5, 5, 5, 0.246);
+    width: 405px;
+}
+
+.car-name {
+    font-weight: 600;
+}
+
+.card-edit-pay img {
+    width: 100%;
+    max-width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.price {
+    font-weight: bold;
+}
+
+.list-feature-pay {
+    list-style: none;
+    line-height: 200%;
+    margin-left: -30px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    
+}
+
+.list-feature-pay li {
+    padding-right: 8px;
+    color: #8A8A8A !important;
+}
+
+.satu-pay::before {
+    content: url(../../Img/fi_users.png);
+    padding-right: 4px;
+    position: relative;
+    top: 2px;
+    
+}
+
+.dua-pay::before {
+    content: url(../../Img/fi_settings.png);
+    padding-right: 4px;
+    position: relative;
+    top: 2px;
+}
+
+.tiga-pay::before {
+    content: url(../../Img/fi_calendar.png);
+    padding-right: 4px;
+    position: relative;
+    top: 2px;
+}
+
+.btn-edit-card {
+    width: 100% !important;
+    background: #5CB85F !important;
+    border-color: #5CB85F !important;
+    border-radius: 2px !important;
+}
+
+.total-pay {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding-top: 24px;
+}

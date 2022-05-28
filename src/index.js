@@ -1,15 +1,19 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { Layout } from './Pages/Layout';
-import reportWebVitals from './reportWebVitals';
-import "./Assets/Css/globalStyle.css"
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.min.js'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { Layout } from "./Pages/Layout";
+import reportWebVitals from "./reportWebVitals";
+import "./Assets/Css/globalStyle.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.min.js";
+import { Provider } from "react-redux";
+import store from "./Redux/Store/Store";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <Layout />
+    <Provider store={store}>
+      <Layout />
+    </Provider>
   </React.StrictMode>
 );
 

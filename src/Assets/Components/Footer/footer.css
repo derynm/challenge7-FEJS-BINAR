@@ -1,0 +1,16 @@
+.footer .row .col p {
+    width: 65%;
+}
+
+.footer .row a {
+    text-decoration: none;
+    color: black;
+}
+
+.footer .row .col {
+    border-top: 1px solid rgba(0, 0, 0, 0.081);
+}
+
+.footer .row .media-social {
+    border: none;
+}

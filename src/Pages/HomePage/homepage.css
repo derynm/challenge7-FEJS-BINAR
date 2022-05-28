@@ -87,6 +87,11 @@ html, body {
     padding-top: 6.5rem;
 }
 
+.chart-mobil {
+    max-width: 600px;
+    margin: auto;
+}
+
 .img-testi {
     height: 65%;
 

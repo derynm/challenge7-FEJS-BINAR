@@ -20,7 +20,7 @@ export const CarCard = (props) => {
           <ModalImage
             small={props.image}
             large={props.image}
-            alt="Hello World!"
+            alt={props.carName}
             showRotate={true}
           />
         </div>

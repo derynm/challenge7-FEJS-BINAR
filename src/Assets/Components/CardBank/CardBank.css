@@ -1,0 +1,30 @@
+#card-bank-main {
+    max-width: 600px;
+    box-shadow: 1px 1px 4px rgba(5, 5, 5, 0.372);
+    border-radius: 4px;
+    padding: 24px;
+}
+
+.nama-bank-card {
+    display: flex;
+}
+
+.nama-bank-card p {
+    padding: 2px 18px;
+    
+}
+
+#card-bank-main hr {
+    margin-top: -2px;
+    color: #9d9d9d;
+}
+
+.bank-border {
+    border: 1px solid #D0D0D0;
+    border-radius: 4px;
+    width: 72px;
+}
+
+.mandiri {
+    padding: 2px 8px !important;
+}

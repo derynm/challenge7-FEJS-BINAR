@@ -58,3 +58,20 @@
 .account-navbar p {
     margin: auto;
 }
+
+.nav-edit {
+    background-color:  #F1F3FF !important;
+}   
+
+.navbar-light .navbar-nav .nav-link {
+    color: black;
+}
+
+.nav-item {
+    padding-right: 0.7rem;
+    padding-left: 0.7rem;
+}
+
+.navbar-padding-top {
+    padding-top: 12px;
+}
