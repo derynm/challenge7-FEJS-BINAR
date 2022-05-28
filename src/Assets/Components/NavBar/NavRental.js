@@ -46,11 +46,7 @@ export const NavRental = (props) => {
                         FAQ
                       </a>
                     </div>
-                    <div className="nav-item">
-                      <button type="button" className="btn btn-success">
-                        Register
-                      </button>
-                    </div>
+
                   </ul>
                 </div>
               </div>
