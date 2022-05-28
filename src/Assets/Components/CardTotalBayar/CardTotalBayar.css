@@ -1,0 +1,27 @@
+#card-total-bayar {
+    max-width: 404px;
+    box-shadow: 1px 1px 4px rgba(5, 5, 5, 0.372);
+    border-radius: 4px;
+    padding: 24px;
+}
+
+.list-feature {
+    list-style: none;
+    line-height: 200%;
+    margin-left: -30px;
+}
+
+.satu::before {
+    content: url(../../Img/fi_users.png);
+    padding-right: 12px;
+}
+
+.dua::before {
+    content: url(../../Img/fi_settings.png);
+    padding-right: 12px;
+}
+
+.tiga::before {
+    content: url(../../Img/fi_calendar.png);
+    padding-right: 12px;
+}

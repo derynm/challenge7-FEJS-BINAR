@@ -17,7 +17,8 @@ import satu_isi from "../../Assets/Img/satu-isi.png";
 import dua_kosong from "../../Assets/Img/dua-kosong.png";
 import tiga_kososng from "../../Assets/Img/tiga-kosong.png";
 import garis from "../../Assets/Img/garis.png";
-import { CardBank } from "../../Assets/Components/CardBank/CardBank";
+import success from "../../Assets/Img/success.png";
+import { HandlePdf } from "../../Assets/Components/HandlePdf/HandlePdf";
 
 const HomePesan = (props) => {
   const [tanggal, setTanggal] = useState(new Date());
@@ -389,47 +390,37 @@ const HomePesan = (props) => {
             <div className="container-xl container-pembayaran">
               <div className="menu-pembayaran">
                 <div className="menu-pembayaran-kiri">
-                  <img src={arrow_left} alt="" />
-                  <h6>Pembayaran</h6>
+                  <img src={arrow_left} alt="" onClick={(e)=>changePage(e,"3")}/>
+                  <div className="tiket-pembayaran">
+                    <h6>Tiket</h6>
+                    <p>Order ID: xxxxxxxx</p>
+                  </div>
                 </div>
                 <div className="menu-pembayaran-kanan">
-                  <img src={satu_isi} alt=""/>
+                  <img src={satu_isi} alt="" />
                   <p>Pilih Metode</p>
-                  <img src={garis} alt=""/>
-                  <img src={dua_kosong} alt=""/> 
+                  <img src={garis} alt="" />
+                  <img src={dua_kosong} alt="" />
                   <p>Bayar</p>
-                  <img src={garis} alt=""/>
-                  <img src={tiga_kososng} alt=""/> 
+                  <img src={garis} alt="" />
+                  <img src={tiga_kososng} alt="" />
                   <p>Tiket</p>
                 </div>
               </div>
             </div>
           </div>
           <div id="section-04">
-            <div className="container-xl">
-              <div id="form-cari" className="page-2">
-                <div className="detail-pesanan">
-                  <h6>Detail Pesanan</h6>
-                  <p>Tipe Driver</p>
-                  <p className="detail-value">Dengan Sopir</p>
-                </div>
-                <div className="detail-pesanan">
-                  <p>Tanggal</p>
-                  <p className="detail-value">27 Mar 2022</p>
-                </div>
-                <div className="detail-pesanan">
-                  <p>Waktu Jemput/Antar</p>
-                  <p className="detail-value">10.00 WIB</p>
-                </div>
-                <div className="detail-pesanan">
-                  <p>Jumlah Penumpang (opsional)</p>
-                  <p className="detail-value">-</p>
-                </div>
-              </div>
-            </div>
+            <div className="container-xl"></div>
           </div>
           <div id="section-04">
-            <div className="container-xl container-pembayaran"><CardBank /></div>
+            <div className="container-xl container-pembayaran">
+              <div className="invoice">
+                <img src={success} alt="" />
+                <h6>Pembayaran Berhasil!</h6>
+                <p>Tunjukkan invoice ini ke petugas BCR di titik temu.</p>
+                <HandlePdf />
+              </div>
+            </div>
           </div>
         </div>
       ) : null}
