@@ -9,17 +9,34 @@ import plus from "../../Assets/Img/fi_plus.png";
 import "./dashboard.css";
 import { Button } from "react-bootstrap";
 import { ModalSucces } from "../../Assets/Components/Modal/ModalSucces";
+import "react-dropzone-uploader/dist/styles.css";
+import Dropzone from "react-dropzone-uploader";
 
 export const Dashboard = () => {
   let navigate = useNavigate();
   const [DataMobil, setDataMobil] = useState([]);
   const [AddDataStat, setAddDataStat] = useState("not");
   const [SuccessAddStat, setSuccessAddStat] = useState(false);
+  const [CekStat, setCekStat] = useState(false)
 
   const [TipeInput, setTipeInput] = useState(null);
   const [NamaInput, setNamaInput] = useState(null);
   const [HargaInput, setHargaInput] = useState(null);
   const [FotoInput, setFotoInput] = useState(null);
+
+  const getUploadParams = ({ meta }) => {
+    return { url: "https://httpbin.org/post" };
+  };
+  const handleChangeStatus = ({ meta, file }, status) => {
+    if (status ==="done") {
+      setCekStat(true)
+  }
+  };
+  const handleSubmit = (files, allFiles) => {
+    console.log(files[0].file)
+    setFotoInput(files[0].file)
+    console.log(FotoInput)
+  };
 
   var axios = require("axios");
 
@@ -189,27 +206,22 @@ export const Dashboard = () => {
                     </div>
                     <div className="input-add input-file">
                       <label>Foto*</label>
-                      <input
+                      {/* <input
                         type="file"
                         id="foto-input"
                         onChange={(e) => {
                           handleStateInput(e);
                         }}
                         required
+                      /> */}
+                      <Dropzone
+                        getUploadParams={getUploadParams}
+                        onChangeStatus={handleChangeStatus}
+                        onSubmit={handleSubmit}
+                        accept="image/*"
                       />
                     </div>
-                    <div className="input-add">
-                      <label>Start Rent</label>
-                      <p>-</p>
-                    </div>
-                    <div className="input-add">
-                      <label>Finish Rent</label>
-                      <p>-</p>
-                    </div>
-                    <div className="input-add">
-                      <label>Udated at</label>
-                      <p>-</p>
-                    </div>
+
                   </div>
 
                   <div className="btn-grp-edit">
@@ -236,7 +248,13 @@ export const Dashboard = () => {
           </div>
         </div>
       </div>
-      {SuccessAddStat ? <ModalSucces visibility={()=>{setSuccessAddStat(false)}}/> : null}
+      {SuccessAddStat ? (
+        <ModalSucces
+          visibility={() => {
+            setSuccessAddStat(false);
+          }}
+        />
+      ) : null}
     </div>
   );
 };
